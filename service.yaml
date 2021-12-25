@@ -8,12 +8,12 @@ spec:
   - 35.216.154.234
   externalTrafficPolicy: Cluster
   ports:
-  - name: httpsNode
+  - name: https-node
     port: 443
     targetPort: 8080
     nodePort: 32045
     protocol: TCP
-  - name: httpNode
+  - name: http-node
     nodePort: 32044
     port: 80
     protocol: TCP
