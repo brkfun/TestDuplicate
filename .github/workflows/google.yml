@@ -10,7 +10,7 @@ env:
   PROJECT_ID: ${{ secrets.GKE_PROJECT }}
   GKE_CLUSTER: cluster-1
   GKE_ZONE: europe-west6-c
-  DEPLOYMENT_NAME: test
+  DEPLOYMENT_NAME: test-app
   IMAGE: python-test
 
 jobs:
