@@ -4,6 +4,9 @@ metadata:
   name: test
 spec:
   externalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
   ports:
   - name: https-node
     port: 443
@@ -18,6 +21,8 @@ spec:
   selector:
     app: test-app
   sessionAffinity: None
-  type: NodePort
+  type: LoadBalancer
 status:
-  loadBalancer: {}
+  loadBalancer:
+    ingress:
+    - ip: 34.65.181.16
