@@ -41,9 +41,17 @@ jobs:
         location: ${{ env.GKE_ZONE }}
         credentials: ${{ secrets.GKE_SA_KEY }}
 
-    # Build the Docker image
+    - name: Get Certificate
+        
+
+      # Build the Docker image
     - name: Build
-      run: |-
+      env:
+        FULL_CHAIN_CERT: ${{ secrets.FULLCHAIN }}
+        PRIVKEY: ${{ secrets.PRIVKEY }}
+      run:
+        -echo $FULL_CHAIN_CERT | base64 --decode > fullchain.pem && echo $PRIVKEY | base64 --decode > privkey.pem
+        |-
         docker build \
           --tag "gcr.io/$PROJECT_ID/$IMAGE:$GITHUB_SHA" \
           --build-arg GITHUB_SHA="$GITHUB_SHA" \
