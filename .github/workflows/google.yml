@@ -41,10 +41,7 @@ jobs:
         location: ${{ env.GKE_ZONE }}
         credentials: ${{ secrets.GKE_SA_KEY }}
 
-    - name: Get Certificate
-        
-
-      # Build the Docker image
+    # Build the Docker image
     - name: Build
       env:
         FULL_CHAIN_CERT: ${{ secrets.FULLCHAIN }}
