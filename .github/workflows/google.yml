@@ -47,7 +47,7 @@ jobs:
         FULL_CHAIN_CERT: ${{ secrets.FULLCHAIN }}
         PRIVKEY: ${{ secrets.PRIVKEY }}
       run: |- 
-        echo $FULL_CHAIN_CERT | base64 --decode > fullchain.pem && echo $PRIVKEY | base64 --decode > privkey.pem
+        echo $FULL_CHAIN_CERT | base64 -d > fullchain.pem && echo $PRIVKEY | base64 -d > privkey.pem
         docker build \
           --tag "gcr.io/$PROJECT_ID/$IMAGE:$GITHUB_SHA" \
           --build-arg GITHUB_SHA="$GITHUB_SHA" \
