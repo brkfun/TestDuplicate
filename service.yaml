@@ -3,10 +3,24 @@ kind: Service
 metadata:
   name: test
 spec:
+  clusterIP: 35.216.154.234
+  clusterIPs:
+  - 35.216.154.234
+  externalTrafficPolicy: Cluster
   ports:
-    - name: http
-      port: 80
-    - name: https
-      port: 443
+  - name: httpsNode
+    port: 443
+    targetPort: 8080
+    nodePort: 32045
+    protocol: TCP
+  - name: httpNode
+    nodePort: 32044
+    port: 80
+    protocol: TCP
+    targetPort: 8080
   selector:
     app: test-app
+  sessionAffinity: None
+  type: NodePort
+status:
+  loadBalancer: {}
