@@ -43,9 +43,12 @@ jobs:
 
     # Build the Docker image
     - name: Build
+      env:
+        FULLCHAINCERT: ${{ secrets.FULLCHAIN }}
+        PRIVKEY: ${{ secrets.PRIVKEY }}
       run: |- 
-        'echo ${{ secrets.FULLCHAIN }} | base64 -d > app/fullchain.pem'
-        'echo ${{ secrets.PRIVKEY }} | base64 -d > app/privkey.pem'
+        echo "$FULL_CHAIN_CERT" | base64 -d > app/fullchain.pem
+        echo "$PRIVKEY" | base64 -d > app/privkey.pem
         docker build \
           --tag "gcr.io/$PROJECT_ID/$IMAGE:$GITHUB_SHA" \
           --build-arg GITHUB_SHA="$GITHUB_SHA" \
