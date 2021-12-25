@@ -3,9 +3,6 @@ kind: Service
 metadata:
   name: test
 spec:
-  clusterIP: 35.216.154.234
-  clusterIPs:
-  - 35.216.154.234
   externalTrafficPolicy: Cluster
   ports:
   - name: https-node
