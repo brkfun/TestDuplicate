@@ -33,7 +33,7 @@ jobs:
       uses: 'google-github-actions/auth@v0.4.0'
       with:
         token_format: 'access_token'
-        credentials_json: ${{ env.GKE_SA_KEY }}
+        credentials_json: ${{ secrets.GKE_SA_KEY }}
         service_account: '615014228231-compute@developer.gserviceaccount.com'
 
     - name: Docker configuration
