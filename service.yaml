@@ -10,7 +10,7 @@ spec:
   ports:
   - name: https-node
     port: 443
-    targetPort: 8080
+    targetPort: 8443
     nodePort: 32045
     protocol: TCP
   - name: http-node
